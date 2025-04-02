@@ -1,23 +1,32 @@
 import java.util.Scanner;
 
 public class Main {
-    public static void printLength(String s) {
-        
+   
+    public static String checkQty(int qty) throws Exception {
+        if (qty <= 0){
+            throw new Exception("Số lượng không hợp lệ");
+        }
+        return "ok";     
     }
 
+    public static String name(String name) throws Exception {
+        if(name == null || name.isEmpty()){
+            throw new Exception("Tên không hợp lệ");
+        }
+        return "ok";
+    }    
+    
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int t = sc.nextInt();
-        // Danh sách test cases từ input
-        for (int i = 0; i < t; i++) {
-            String[] testCases = {
-            };
-        }
-       
+        Scanner scanner = new Scanner(System.in);
         
-        // Duyệt qua từng test case và in độ dài
-        for (String test : testCases) {
-            printLength(test);
-        }
+        System.out.print("Nhập số lượng: ");
+        int qty = scanner.nextInt();
+        System.out.print(checkQty(qty));
+        
+        System.out.print("Nhập tên: ");
+        String name = scanner.next();
+        System.out.print(name(name));
+
+        scanner.close();
     }
 }

@@ -1,0 +1,1 @@
+{"name":"Local: BASIC002","url":"f:\\PTIT\\OOP\\OOP_Practice\\BASIC002.java","tests":[{"id":1743389593217,"input":"3\n1 3 4\n2 4 5\n2 4 5\n","output":"18\n72\n72"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"f:\\PTIT\\OOP\\OOP_Practice\\BASIC002.java","group":"local","local":true}

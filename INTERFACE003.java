@@ -43,7 +43,7 @@ class CustomTacoBox implements TacoBox {
     }
 
 }
-
+    
 public class INTERFACE003 {
     public static void main(String[] args) {
         TripleTacoBox tripleTacoBox = new TripleTacoBox();
