@@ -51,19 +51,34 @@ class SportsCar extends Car {
 }
 
 public class INHERITANCE004 {
+    public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int t = sc.nextInt();
-        for (int i = 1; i <= t; i++) {
-            double price = sc.nextDouble();
-            int year = sc.nextInt();
-            Car car = new Car(price, year);
-            ClassicCar classicCar = new ClassicCar(price, year);
-            SportsCar sportsCar = new SportsCar(price, year);
-            System.out.println("Car " + i + ": " + car.calculateSalePrice());
-            System.out.println("ClassicCar " + i + ": " + classicCar.calculateSalePrice());
-            System.out.println("SportsCar " + i + ": " + sportsCar.calculateSalePrice());
+        int n = sc.nextInt();
+        sc.nextLine();
+        double maxSalePrice = 0;
+        while (n-- > 0) {
+            String inp = sc.nextLine();
+            String lString[] = inp.split(" ");
+            String type = lString[0];
+            double price = Double.parseDouble(lString[1]);
+            int year = Integer.parseInt(lString[2]);
+            Car car = createCar(type, price, year);
+            double salePrice = car.calculateSalePrice();
+            maxSalePrice = Math.max(maxSalePrice, salePrice);
+            System.out.printf("Price: %,.2f VND | Year: %d\n", salePrice, car.year);
         }
+        System.out.printf("Most Expensive: %,.2f VND\n", maxSalePrice);
         sc.close();
     }
+
+    public static Car createCar(String type, double price, int year) {
+        if (type.equals("SC")) {
+            return new SportCar(price, year);
+        } else {
+            return new ClassicCar(price, year);
+        }
+    }
+}
+
 }
