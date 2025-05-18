@@ -38,14 +38,14 @@ class Dish implements PricedItem, SourceableItem {
 
 public class INTERFACE021 {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int testCases = Integer.parseInt(scanner.nextLine());
+        Scanner sc= new Scanner(System.in);
+        int t = Integer.parseInt(sc.nextLine());
         
-        while (testCases-- > 0) {
+        while (t-- > 0) {
             List<Dish> dishes = new ArrayList<>();
 
             while (true) {
-                String line = scanner.nextLine();
+                String line = sc.nextLine();
                 if (line.equals("Checkout")) break;
 
                 // Tách chuỗi theo dấu ngoặc kép
@@ -61,7 +61,7 @@ public class INTERFACE021 {
                 }
             }
 
-            String targetRestaurant = scanner.nextLine().trim();
+            String targetRestaurant = sc.nextLine().trim();
 
             for (Dish dish : dishes) {
                 if (dish.getSourceName().equals(targetRestaurant)) {
@@ -69,6 +69,6 @@ public class INTERFACE021 {
                 }
             }
         }
-        scanner.close();
+       sc.close();
     }
 }
