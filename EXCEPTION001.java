@@ -9,54 +9,57 @@ class Amount {
         this.amount = amount;
     }
 
-    public void add(Amount amount) {
-        if (this.currency.equals(amount.currency)) {
-            this.amount += amount.amount;
+    public String getCurrency() {
+        return currency;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void add(Amount other) {
+        if (this.currency.equals(other.currency)) {
+            this.amount += other.amount;
         } else {
             System.out.println("Currency doesn't match");
         }
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (!(obj instanceof Amount)) return false;
-        Amount other = (Amount) obj;
-        return this.currency.equals(other.currency);
-    }
-
-    @Override
-    public String toString() {
-        return amount + " " + currency;
     }
 }
 
 public class EXCEPTION001 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int t = scanner.nextInt();
-        scanner.nextLine(); // consume newline
 
-        for (int i = 0; i < t; i++) {
-            String currency1 = scanner.nextLine();
-            int amount1 = scanner.nextInt();
-            scanner.nextLine(); // consume newline
+        try {
+            int t = Integer.parseInt(scanner.nextLine());
 
-            String currency2 = scanner.nextLine();
-            int amount2 = scanner.nextInt();
-            scanner.nextLine(); // consume newline
+            for (int i = 0; i < t; i++) {
+                String line = scanner.nextLine().trim();
+                String[] parts = line.split("\\s+");
+                if (parts.length != 4) {
+                    System.out.println("Invalid input format at line " + (i + 1));
+                    continue;
+                }
 
-            Amount am1 = new Amount(currency1, amount1);
-            Amount am2 = new Amount(currency2, amount2);
+                String currency1 = parts[0];
+                int amount1 = Integer.parseInt(parts[1]);
+                String currency2 = parts[2];
+                int amount2 = Integer.parseInt(parts[3]);
 
-            if (am1.equals(am2)) {
-                am1.add(am2);
-                System.out.println(am1);
-            } else {
-                System.out.println("Currency doesn't match");
+                Amount am1 = new Amount(currency1, amount1);
+                Amount am2 = new Amount(currency2, amount2);
+
+                if (am1.getCurrency().equals(am2.getCurrency())) {
+                    am1.add(am2);
+                    System.out.println(am1.getAmount());
+                } else {
+                    System.out.println("Currency doesn't match");
+                }
             }
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid number format. Please enter valid integers for amounts.");
+        } finally {
+            scanner.close();
         }
-
-        scanner.close();
     }
 }
