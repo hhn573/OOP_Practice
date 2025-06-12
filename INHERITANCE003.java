@@ -1,50 +1,49 @@
 class Person {
-    private String name;
-    private String address;
+    protected String name;
+    protected String address;
 
     public Person(String name, String address) {
         this.name = name;
         this.address = address;
     }
 
-    public String getName() {
+    public String getName(){
         return name;
     }
 
-    public String getAddress() {
+    public String getAddress(){
         return address;
     }
 
-    public String toString () {
+    public String toString() {
         return name + " - " + address;
     }
 }
 
 class Student extends Person {
-    private int creadits;
-    private int StudentID;
+    protected int credits;
+    protected int studentID;
 
-    public Student(String name, String address, int creadits, int StudentID) {
+    public Student(String name, String address, int credits, int studentID) {
         super(name, address);
-        this.creadits = creadits;
-        this.StudentID = StudentID;
+        this.credits = credits;
+        this.studentID = studentID;
     }
 
     public void study() {
-        creadits++;
+        credits++;
     }
 
-    public int getCreadits() {
-        return creadits;
-    }   
+    public void getCredits() {
+        System.out.println("Study credits " + credits);
+    }
 }
-
 public class INHERITANCE003 {
     public static void main(String[] args) {
-        Student student = new Student("Ollie", "6381 Hollywood Blvd. Los Angeles 90028", 0, 123456);
+        Student student = new Student("Ollie", "6381 Hollywood Blvd. Los Angeles 90028", 0, 90028);
         System.out.println(student.toString());
-        System.out.println("Study credits " + student.getCreadits());
+        student.getCredits();
         student.study();
-        System.out.println("Study credits " + student.getCreadits());
+        student.getCredits();
     }
 }

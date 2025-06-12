@@ -1,5 +1,7 @@
 import java.util.*;
 
+
+
 class Warehouse {
     private Map<String, Integer> prices = new HashMap<>();
     private Map<String, Integer> stocks = new HashMap<>();
