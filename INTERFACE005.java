@@ -1,5 +1,4 @@
 import java.util.*;
-
 interface Identifiable {
     String getId();
 }
@@ -75,7 +74,7 @@ public class INTERFACE005 {
                 }
             }
 
-            String year = sc.nextLine(); // Lọc theo năm sinh
+            String year = sc.nextLine(); 
 
             for (Birthable entity : birthdayEntities) {
                 if (entity.getBirthday().endsWith(year)) {
